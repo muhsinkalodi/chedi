@@ -2,5 +2,155 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h2>Dashboard</h2>
+<style>
+    .taskbar {
+        width: 100%;
+        /* Full width of parent */
+        height: 20px;
+        /* Adjust height as needed */
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        /* Use flexbox to align items horizontally */
+    }
+
+    .progress {
+        width: 50%;
+        /* Change the width to alter the loading progress */
+        height: 100%;
+        background-color: #4caf50;
+        /* Green color for progress */
+        border-radius: 10px;
+    }
+</style>
+<h2 class="pb-4 ">Dashboard</h2>
+
+<div class="row">
+    <div class="col">
+        <div class="card mb-3" style="max-width: 360px;">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Earnings (MONTHLY)</h5>
+                    <p class="card-text">₹ 40,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card mb-3" style="max-width: 360px;">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Earnings (ANNUAL)</h5>
+                    <p class="card-text">₹ 215,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card mb-3" style="max-width: 360px;">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="col">
+                        <div class="row">
+                            <h5 class="card-title">TASKS</h5>
+                        </div>
+                        <div class="row">
+                            <p class="card-text">50%</p>
+                            <div class="taskbar">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col">
+        <div class="card mb-3" style="max-width: 360px;">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">PENDING REQUESTS</h5>
+                    <p class="card-text">18</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card mb-3" style="max-height: 500px;">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Earnings Overview</h5>
+                    <canvas id="line_chart" style="width:100%;max-height:500px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+
+        <div class="card mb-3" style="max-height: 500px;">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Revenue Sources</h5>
+                    <canvas id="pie_chart" style="width:100%;max-height:500px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    xValues = ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov'];
+    yValues = [0, 10000, 5000, 15000, 7500, 20000];
+    ctx = document.getElementById('line_chart');
+
+    new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "Earnings",
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: yValues
+            }]
+        },
+        options: {}
+    });
+</script>
+
+<script>
+
+    xValues = ['Direct', 'Social', 'Referral'];
+    yValues = [60, 30, 10];
+    barColors = ["red", "green","blue"]
+    ctx = document.getElementById('pie_chart');
+
+    new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "World Wide Wine Production"
+            }
+        }
+    });
+</script>
 {% endblock %}

@@ -4,7 +4,6 @@ from .views.about import about
 from .views.recognition import recognition
 from .views.dashbord import dashboard
 from .views.sign_in import sign_in
-from .views.sign_out import sign_out
 
 
 def create_app():
@@ -15,6 +14,5 @@ def create_app():
     app.register_blueprint(recognition, url_prefix="/recognition")
     app.register_blueprint(dashboard, url_prefix="/dashboard")
     app.register_blueprint(sign_in, url_prefix="/sign-in")
-    app.register_blueprint(sign_out, url_prefix="/sign-out")
 
     return app
