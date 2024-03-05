@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>PLANT DISEASE RECOGNITION SYSTEM</h2>
+<img src="{{url_for('static', filename='home_page.jpeg')}}">
+<p>Our mission is to help in identifying plant diseases efficiently. Upload an image of a plant, and our system will
+    analyze it to detect any signs of diseases. Together, let's protect our crops and ensure a healthier harvest!</p>
+
+<div>
+    <h2>How It Works</h2>
+    <ol>
+        <li><b>Upload Image: </b>Go to the Disease Recognition page and upload an image of a plant with suspected
+            diseases.
+        </li>
+        <li><b>Analysis: </b>Our system will process the image using advanced algorithms to identify potential diseases.
+        </li>
+        <li><b>Results: </b>View the results and recommendations for further action.</li>
+    </ol>
+</div>
+
+<div>
+    <h2>Why Choose Us?</h2>
+    <ol>
+        <li><b>Accuracy: </b>Our system utilizes state-of-the-art machine learning techniques for accurate disease
+            detection.
+        </li>
+        <li><b>User-Friendly: </b>Simple and intuitive interface for seamless user experience.
+        </li>
+        <li><b>Fast and Efficient: </b>Receive results in seconds, allowing for quick decision-making.</li>
+    </ol>
+</div>
+
+<div>
+    <h2>Get Started</h2>
+    <p>Click on the <b>Disease Recognition</b> page in the sidebar to upload an image and experience the power of our
+        Plant Disease Recognition System!</p>
+</div>
+
+<div>
+    <h2>About Us</h2>
+    <p>Learn more about the project, our team, and our goals on the About page.</p>
+</div>
+
+<br>
+<br>
+
+{% endblock %}
