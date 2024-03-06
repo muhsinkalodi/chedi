@@ -5,7 +5,10 @@ from .views.about import about
 from .views.recognition import recognition
 from .views.dashbord import dashboard
 from .views.sign_in import sign_in
+from os import path, mkdir
 
+if not path.exists('./uploads'):
+    mkdir('./uploads')
 
 def create_app():
 
