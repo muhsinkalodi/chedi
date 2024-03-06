@@ -7,8 +7,8 @@ from .views.dashbord import dashboard
 from .views.sign_in import sign_in
 from os import path, mkdir
 
-if not path.exists('./uploads'):
-    mkdir('./uploads')
+if not path.exists('website/uploads'):
+    mkdir('website/uploads')
 
 def create_app():
 
