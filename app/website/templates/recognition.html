@@ -2,5 +2,47 @@
 {% block title %}Recognition{% endblock %}
 
 {% block content %}
+
+{{ dropzone.load_css() }}
+{{ dropzone.style('max-width: 500px') }}
+
 <h2>Disease Recognition</h2>
+
+{{ dropzone.config() }}
+{{ dropzone.create(action='/recognition', method='POST', dictDefaultMessage="Drop files here or click to upload") }}
+{{ dropzone.load_js() }}
+
+
+<div id="prediction-result">
+    <h2>Prediction: <span id="result">{{result_class}}</span></h2>
+</div>
+
+<script>
+    // Function to handle the response
+    function handleResponse(response) {
+        document.write(response);
+    }
+
+    // Function to submit the form and handle the response
+    function submitForm() {
+        var formData = new FormData();
+        formData.append("file", document.getElementById("file").files[0]);
+
+        fetch("/recognition", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => handleResponse(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Listen for the success event when the file is successfully uploaded
+    Dropzone.options.myDropzone = {
+        success: function (file, response) {
+            handleResponse(response);
+        }
+    };
+</script>
+
 {% endblock %}

@@ -1,3 +1,4 @@
+from flask_dropzone import Dropzone
 from flask import Flask
 from .views.home import home
 from .views.about import about
@@ -14,5 +15,13 @@ def create_app():
     app.register_blueprint(recognition, url_prefix="/recognition")
     app.register_blueprint(dashboard, url_prefix="/dashboard")
     app.register_blueprint(sign_in, url_prefix="/sign-in")
+
+    app.config.update(
+        UPLOADED_PATH = 'uploads',
+        DROPZONE_MAX_FILE_SIZE=5, # max size 5 mb
+        DROPZONE_TIMEOUT=3*60*1000, # 3 miniutes
+    )
+
+    dropzone = Dropzone(app)
 
     return app
